@@ -1,0 +1,19 @@
+<div class="card card-body">
+    <p>Create user</p>
+    <form {{action 'submitForm' item on='submit' }}>
+        <div class="form-group">
+            <label for="">First name</label>
+            {{input type="text" class="form-control" value=item.firstName}}
+        </div>
+        <div class="form-group">
+            <label for="">Last name</label>
+            {{input type="text" class="form-control" value=item.lastName}}
+        </div>
+
+        <p>New user "{{fullName}}" will be added to the store</p>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+</div>
