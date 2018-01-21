@@ -1,6 +1,5 @@
 {
-  "name": "kw-redux",
+  "name": "kw-ember-redux",
   "dependencies": {
-    "components-font-awesome": "^4.7.0"
   }
 }
