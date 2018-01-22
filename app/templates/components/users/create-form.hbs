@@ -1,19 +1,23 @@
 <div class="card card-body">
     <p>Create user</p>
-    <form {{action 'submitForm' item on='submit' }}>
+    <form {{action 'submitForm' user on='submit' }}>
+        {{#if message}}
+            <p class="alert alert-success">{{message}}</p>
+        {{/if}}
+
         <div class="form-group">
             <label for="">First name</label>
-            {{input type="text" class="form-control" value=item.firstName}}
+            <input type="text" class="form-control" value={{readonly user.firstName}} debounce=200 onKeyUp={{action "onChange"
+                "firstName"}}>
         </div>
         <div class="form-group">
             <label for="">Last name</label>
-            {{input type="text" class="form-control" value=item.lastName}}
+            <input type="text" class="form-control" value={{readonly user.lastName}} onKeyUp={{action "onChange" "lastName"}}>
         </div>
 
-        <p>New user "{{fullName}}" will be added to the store</p>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="submit" class="btn btn-primary" disabled={{invalidData}}>Add</button>
         </div>
     </form>
 </div>

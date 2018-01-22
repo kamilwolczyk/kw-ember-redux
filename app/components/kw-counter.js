@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { get, set, computed } from '@ember/object';
 import { connect } from 'ember-redux';
-import { add, subtract } from '../actions/counter';
+import { add, subtract } from '../state/counter/actions';
 
 const stateToComputed = state => {
   return {

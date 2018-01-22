@@ -1,19 +1,28 @@
 import {
   computed,
-  set,
-  get
+  get,
+  set
 } from '@ember/object';
 import Component from '@ember/component';
 import {
   add,
   modifyCurrent
-} from '../../actions/users';
+} from '../../state/users/actions';
 import {
   connect
 } from 'ember-redux';
+import {
+  currentUserValidator
+} from '../../state/users/validators';
 
 const stateToComputed = state => {
-  return {};
+  return {
+    user: {
+      firstName: state.users.current.firstName,
+      lastName: state.users.current.lastName,
+    },
+    invalidData: !currentUserValidator(state)
+  };
 }
 
 const dispatchToActions = {
@@ -23,40 +32,32 @@ const dispatchToActions = {
 
 const CreateFormComponent = Component.extend({
 
-  fullName: computed("item.firstName", "item.lastName", function () {
-    const user = this._getUserFromForm();
-    this.actions.modifyCurrent(user);
-    return `${user.firstName} ${user.lastName}`;
+  message: false,
+
+  fullName: computed("user.firstName", "user.lastName", function () {
+    return `${get(this, "user.firstName")} ${get(this, "user.lastName")}`;
   }),
 
-  init() {
-    this._super(...arguments);
-    this._setEmptyUser();
-  },
-
   actions: {
-    submitForm() {
-      const user = this._getUserFromForm();
+    submitForm(user) {
+      this._showMessage();            
       this.actions.add(user);
-      this._setEmptyUser();
+    },
+
+    onChange(propName, {target}) {
+      this.actions.modifyCurrent({
+        firstName: get(this, "user.firstName"),
+        lastName: get(this, "user.lastName"),
+        [propName]: target.value
+      });
     }
   },
 
-  _getUserFromForm() {
-    const firstName = get(this, "item.firstName");
-    const lastName = get(this, "item.lastName");
-    
-    return {
-      firstName: firstName,
-      lastName: lastName
-    };
-  },
-
-  _setEmptyUser() {
-    set(this, 'item', {
-      firstName: '',
-      lastName: ''
-    });
+  _showMessage() {
+    set(this, "message", `User ${get(this,"fullName")} will be added to the list`);
+    setTimeout(() => {
+      set(this, "message", null);
+    }, 2000);
   }
 });
 

@@ -1,0 +1,25 @@
+<div class="card card-body">
+    <p>Users</p>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>First name</th>
+                <th>Last name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users as |item index|}}
+            <tr>
+                <td>{{list-number index}}</td>
+                <td>{{item.firstName}}</td>
+                <td>{{item.lastName}}</td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="3">Items not found</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
