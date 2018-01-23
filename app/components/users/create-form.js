@@ -3,10 +3,12 @@ import {
   get,
   set
 } from '@ember/object';
+import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 import {
   add,
-  modifyCurrent
+  modifyCurrent,
+  dispatchFetchUsers
 } from '../../state/users/actions';
 import {
   connect
@@ -27,10 +29,12 @@ const stateToComputed = state => {
 
 const dispatchToActions = {
   add,
-  modifyCurrent
+  modifyCurrent,
+  dispatchFetchUsers
 }
 
 const CreateFormComponent = Component.extend({
+  redux: service(),
 
   message: false,
 
@@ -40,8 +44,12 @@ const CreateFormComponent = Component.extend({
 
   actions: {
     submitForm(user) {
-      this._showMessage();            
+      this._showMessage();
       this.actions.add(user);
+    },
+
+    fetchUsers() {
+      this.actions.dispatchFetchUsers();
     },
 
     onChange(propName, {target}) {

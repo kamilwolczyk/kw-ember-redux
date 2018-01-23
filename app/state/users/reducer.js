@@ -15,6 +15,14 @@ export default function (state = defaultState, event) {
       return Object.assign({}, state, {
         current: event.data
       });
+    case types.USER_FETCH_SUCCEEDED:
+      return Object.assign({}, state, {
+        users: [event.user]
+      });
+    case types.USER_FETCH_FAILED:
+      return Object.assign({}, state, {
+        errors: "User fetch failed!"
+      });
     default:
       return state;
   }
