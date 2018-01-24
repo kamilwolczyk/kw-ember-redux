@@ -4,25 +4,23 @@ import defaultState from './default-state';
 export default function (state = defaultState, event) {
   switch (event.type) {
     case types.USERS_ADD:
-      return Object.assign({}, state, {
+      return { ...state,
         current: {
           firstName: "",
           lastName: ""
         },
         users: [...state.users, event.data]
-      });
+      };
     case types.USERS_MODIFY:
-      return Object.assign({}, state, {
+      return { ...state,
         current: event.data
-      });
+      };
     case types.USER_FETCH_SUCCEEDED:
-      return Object.assign({}, state, {
-        users: [event.user]
-      });
+      return { ...state,
+        users: [...state.users, ...event.users]
+      };
     case types.USER_FETCH_FAILED:
-      return Object.assign({}, state, {
-        errors: "User fetch failed!"
-      });
+      return { ...state, errors: "User fetch failed!" };
     default:
       return state;
   }

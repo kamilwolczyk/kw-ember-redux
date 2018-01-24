@@ -1,6 +1,8 @@
-import { takeLatest } from 'redux-saga/effects'
-import fetchUser from './user';
+import { fork } from 'redux-saga/effects';
+import { user } from '../state/users/saga';
 
-export default function* rootSaga() {
-  yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
+export default function* root() {
+  yield [
+    fork(user)
+  ];
 }
