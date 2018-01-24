@@ -1,8 +1,8 @@
-export default class Api {
+export default class UsersApi {
   static async fetchUser() {
       return fetch('https://jsonplaceholder.typicode.com/users').then((response) => {
         if (!response.ok) {
-          throw new Error("Http request failed");
+          return new Error("Http request failed");
         }
 
         return response;
