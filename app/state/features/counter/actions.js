@@ -1,5 +1,5 @@
-import * as types from '../action-types';
-import action from '../core/action-factory';
+import * as types from 'kw-redux/state/action-types';
+import action from 'kw-redux/state/core/action-factory';
 
 export const add = value => action(types.COUNTER_ADD, value);
 export const subtract = value => action(types.COUNTER_SUBTRACT, value);

@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import UsersApi from '../../api/users';
+import UsersApi from 'kw-redux/api/users';
 
 function* fetchUsers() {
   try {
@@ -10,6 +10,6 @@ function* fetchUsers() {
   }
 }
 
-export function* user() {
+export function* userSaga() {
   yield takeLatest('USER_FETCH_REQUESTED', fetchUsers);
 }
