@@ -1,5 +1,5 @@
 import createSagaMiddleWare from 'redux-saga';
-import root from '../sagas/index';
+import root from 'kw-redux/state/core/root-saga';
 
 const sagaMiddleware = createSagaMiddleWare();
 
