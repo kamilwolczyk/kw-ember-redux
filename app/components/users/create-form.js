@@ -1,20 +1,7 @@
-import {
-  computed,
-  get,
-  set
-} from '@ember/object';
+import { computed, get, set } from '@ember/object';
+import { add, modifyCurrent, fetchUsers, currentUserValidator } from 'kw-redux/state/features/users';
+import { connect } from 'ember-redux';
 import Component from '@ember/component';
-import {
-  add,
-  modifyCurrent,
-  fetchUsers
-} from '../../state/users/actions';
-import {
-  connect
-} from 'ember-redux';
-import {
-  currentUserValidator
-} from '../../state/users/validators';
 
 const stateToComputed = state => {
   return {
@@ -49,7 +36,7 @@ const CreateFormComponent = Component.extend({
       this.actions.fetchUsers();
     },
 
-    onChange(propName, {target}) {
+    onChange(propName, { target }) {
       this.actions.modifyCurrent({
         firstName: get(this, "user.firstName"),
         lastName: get(this, "user.lastName"),
@@ -59,7 +46,7 @@ const CreateFormComponent = Component.extend({
   },
 
   _showMessage() {
-    set(this, "message", `User ${get(this,"fullName")} will be added to the list`);
+    set(this, "message", `User ${get(this, "fullName")} will be added to the list`);
     setTimeout(() => {
       set(this, "message", null);
     }, 2000);

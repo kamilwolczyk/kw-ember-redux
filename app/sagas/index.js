@@ -1,8 +1,8 @@
 import { fork } from 'redux-saga/effects';
-import { user } from '../state/users/saga';
+import { userSaga } from 'kw-redux/state/features/users';
 
 export default function* root() {
   yield [
-    fork(user)
+    fork(userSaga)
   ];
 }

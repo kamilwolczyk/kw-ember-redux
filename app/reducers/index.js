@@ -1,10 +1,8 @@
-import {
-  combineReducers
-} from 'redux';
-import counter from '../state/counter/reducer';
-import users from '../state/users/reducer';
+import { combineReducers } from 'redux';
+import { counterReducer } from 'kw-redux/state/features/counter';
+import { usersReducer } from 'kw-redux/state/features/users';
 
 export default combineReducers({
-  counter,
-  users,
+  counter: counterReducer,
+  users: usersReducer,
 });
