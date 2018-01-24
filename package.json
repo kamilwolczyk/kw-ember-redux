@@ -38,23 +38,27 @@
     "ember-export-application-global": "^2.0.0",
     "ember-format-json": "0.0.2",
     "ember-load-initializers": "^1.0.0",
-    "ember-lodash-shim": "^2.0.7",
+    "ember-lodash-shim": "^2.0.0",
+    "ember-maybe-import-regenerator": "^0.1.6",
     "ember-redux": "^3.1.0",
-    "ember-redux-shim": "^2.5.1",
+    "ember-redux-saga-shim": "^2.0.0",
+    "ember-redux-shim": "^2.5.0",
     "ember-redux-thunk-shim": "^2.4.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.17.0",
-    "ember-symbol-observable": "^1.0.1",
+    "ember-symbol-observable": "1.0.1",
     "ember-welcome-page": "^3.0.0",
     "loader.js": "^4.2.3",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
+    "redux": "3.7.2",
+    "redux-saga": "0.16.0",
+    "redux-thunk": "2.2.0",
     "reselect": "^3.0.1"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "ember-bootstrap": "^1.2.0"
   }
 }

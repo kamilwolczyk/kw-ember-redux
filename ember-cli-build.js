@@ -9,6 +9,14 @@ module.exports = function(defaults) {
       'bootstrapVersion': 4,
       'importBootstrapFont': false,
       'importBootstrapCSS': true
+    },
+    'ember-cli-babel': {
+      includePolyfill: true
+    },
+    'babel': {
+      plugins: [
+        'transform-object-rest-spread'
+      ]
     }
   });
 

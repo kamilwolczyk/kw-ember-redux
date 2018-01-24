@@ -6,7 +6,8 @@ import {
 import Component from '@ember/component';
 import {
   add,
-  modifyCurrent
+  modifyCurrent,
+  fetchUsers
 } from '../../state/users/actions';
 import {
   connect
@@ -27,11 +28,11 @@ const stateToComputed = state => {
 
 const dispatchToActions = {
   add,
-  modifyCurrent
+  modifyCurrent,
+  fetchUsers
 }
 
 const CreateFormComponent = Component.extend({
-
   message: false,
 
   fullName: computed("user.firstName", "user.lastName", function () {
@@ -40,8 +41,12 @@ const CreateFormComponent = Component.extend({
 
   actions: {
     submitForm(user) {
-      this._showMessage();            
+      this._showMessage();
       this.actions.add(user);
+    },
+
+    fetchUsers() {
+      this.actions.fetchUsers();
     },
 
     onChange(propName, {target}) {
