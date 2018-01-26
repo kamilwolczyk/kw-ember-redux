@@ -1,15 +1,15 @@
 import { create } from '../../core/action';
-import { User } from './dtos/user';
+import { IUser } from './dtos/user';
 
-export const add = (user: User) => create(types.add, user);
-export const modifyCurrent = (user: User) => create<User>(types.modifyCurrent, user);
-export const fetchUsers = () => create(types.requestUsers);
+export const add = (user: IUser) => create(UsersAction.Add, user);
+export const modifyCurrent = (user: IUser) => create<IUser>(UsersAction.ModifyCurrent, user);
+export const fetchUsers = () => create(UsersAction.RequestUsers, null);
 
-export const types = {
-  add: "USERS_ADD",
-  modifyCurrent: "USERS_MODIFY",
+export enum UsersAction {
+  Add = "USERS_ADD",
+  ModifyCurrent = "USERS_MODIFY",
 
-  requestUsers: "USER_FETCH_REQUESTED",
-  requestUsersSuccess: "USER_FETCH_SUCCEEDED",
-  requestUsersFailure: "USER_FETCH_FAILED",
+  RequestUsers = "USER_FETCH_REQUESTED",
+  RequestUsersSuccess = "USER_FETCH_SUCCEEDED",
+  RequestUsersFailure = "USER_FETCH_FAILED",
 }

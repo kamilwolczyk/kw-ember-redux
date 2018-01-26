@@ -1,8 +1,8 @@
-import { User } from "./dtos/user";
+import { IUser } from "./dtos/user";
 
 export interface UsersState {
-  current: User,
-  users: User[]
+  current: IUser,
+  users: IUser[]
 }
 
 export const initialState: UsersState = {

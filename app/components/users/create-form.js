@@ -1,4 +1,4 @@
-import { computed, get, set } from '@ember/object';
+import { get, set } from '@ember/object';
 import { add, modifyCurrent, fetchUsers, currentUserValidator } from 'kw-redux/state/features/users';
 import { connect } from 'ember-redux';
 import Component from '@ember/component';

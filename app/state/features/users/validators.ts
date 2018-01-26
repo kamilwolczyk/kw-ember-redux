@@ -1,12 +1,12 @@
 import reselect from 'npm:reselect';
 import { ApplicationState } from '../../application-state';
-import { User } from './dtos/user';
+import { IUser } from './dtos/user';
 
 const { createSelector } = reselect;
 
 export const currentUserValidator = createSelector(
   (state: ApplicationState) => state.users.current,
-  (current: User) => {
+  (current: IUser) => {
     if (!current || !current.firstName || !current.lastName) {
       return false;
     }

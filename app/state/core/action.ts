@@ -3,7 +3,7 @@ export interface Action<TPayload> {
   payload?: TPayload;
 }
 
-export function create<TPayload>(type: string, payload?: TPayload): Action<TPayload> {
+export function create<TPayload>(type: string, payload: TPayload): Action<TPayload> {
   return {
     type: type,
     payload: payload
