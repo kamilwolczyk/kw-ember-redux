@@ -1,4 +1,4 @@
-import { computed, get, set } from '@ember/object';
+import { get, set } from '@ember/object';
 import { add, modifyCurrent, fetchUsers, currentUserValidator } from 'kw-redux/state/features/users';
 import { connect } from 'ember-redux';
 import Component from '@ember/component';
@@ -21,10 +21,6 @@ const dispatchToActions = {
 
 const CreateFormComponent = Component.extend({
   message: false,
-
-  fullName: computed("user.firstName", "user.lastName", function () {
-    return `${get(this, "user.firstName")} ${get(this, "user.lastName")}`;
-  }),
 
   actions: {
     submitForm(user) {

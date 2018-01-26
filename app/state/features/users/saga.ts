@@ -1,12 +1,15 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import UsersApi from 'kw-redux/api/users';
+import { create } from '../../core/action';
+import { UsersAction } from './actions';
+import { IUser } from './dtos/user';
 
 function* fetchUsers() {
   try {
     const users = yield call(UsersApi.fetchUser, null);
-    yield put({type: "USER_FETCH_SUCCEEDED", users});
+    yield put(create(UsersAction.RequestUsersSuccess, users));
   } catch (e) {
-    yield put({type: "USER_FETCH_FAILED", msg: e.message});
+    yield put(create(UsersAction.RequestUsersFailure, e.message));
   }
 }
 
