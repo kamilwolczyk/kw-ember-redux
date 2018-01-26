@@ -4,7 +4,6 @@ import { connect } from 'ember-redux';
 import { add, subtract } from 'kw-redux/state/features/counter';
 
 const stateToComputed = state => {
-  console.log(state);
   return {
     counterValue: state.counter.value
   };

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "strict": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmitOnError": false,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "guides/*": ["app/*"],
+      "ember-redux": ["node_modules/ember-redux/index.d.ts"],
+      "redux": ["node_modules/redux/index.d.ts"],
+      "fetch": ["node_modules/ember-fetch/index.d.ts"],
+      "npm:reselect":["node_modules/reselect/src/index.d.ts"]
+    }
+  },
+  "include": [
+    "**/*.ts"
+  ]
+}

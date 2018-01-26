@@ -22,10 +22,6 @@ const dispatchToActions = {
 const CreateFormComponent = Component.extend({
   message: false,
 
-  fullName: computed("user.firstName", "user.lastName", function () {
-    return `${get(this, "user.firstName")} ${get(this, "user.lastName")}`;
-  }),
-
   actions: {
     submitForm(user) {
       this._showMessage();
