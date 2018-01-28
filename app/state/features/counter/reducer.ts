@@ -1,13 +1,19 @@
-import { CounterState, InitialState } from './counter-state';
-import { CounterAction } from './actions';
-import { Action } from '../../core/action';
+import { AddAction, CounterAction, SubtractAction } from "./actions";
 
-export function counterReducer(state: CounterState = InitialState, action: Action<number>): CounterState {
+export const initialState = {
+  value: 0
+};
+
+type ActionTypes =
+  | AddAction
+  | SubtractAction;
+
+export function counterReducer(state = initialState, action: ActionTypes) {
   switch (action.type) {
     case CounterAction.Add:
       return { ...state, value: state.value + action.payload };
     case CounterAction.Subtract:
-      return { ...state, value: state.value - action.payload }
+      return { ...state, value: state.value - action.payload };
     default:
       return state;
   }

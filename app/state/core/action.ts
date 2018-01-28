@@ -1,11 +1,9 @@
-export interface Action<TPayload> {
-  type: string;
-  payload?: TPayload;
+export interface Action<T, P> {
+  readonly type: T;
+  readonly payload?: P;
 }
 
-export function create<TPayload>(type: string, payload: TPayload): Action<TPayload> {
-  return {
-    type: type,
-    payload: payload
-  };
-}
+export const createAction = <T, P>(type: T, payload?: P): Action<T, P> => ({
+  type,
+  payload
+});
