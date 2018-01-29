@@ -1,4 +1,5 @@
 import { moduleForComponent, test } from 'ember-qunit';
+import wait from 'ember-test-helpers/wait';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('users/create-form', 'Integration | Component | users/create form', {
@@ -9,16 +10,12 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{users/create-form}}`);
+  this.render(hbs`{{users/create-form}}{{users/user-list}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  this.$('button.btn.btn-primary:contains("Fetch remote users")').click();
 
-  // Template block usage:
-  this.render(hbs`
-    {{#users/create-form}}
-      template block text
-    {{/users/create-form}}
-  `);
+  return wait().then(() => {
+    assert.equal(this.$("tr:nth-child(1) > td:nth-child(2)").text().trim(), 'Leanne');
+  });
 
-  assert.equal(this.$().text().trim(), 'template block text');
 });

@@ -11,14 +11,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{kw-state-presenter}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#kw-state-presenter}}
-      template block text
-    {{/kw-state-presenter}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim().replace("Current state", "")[1], "{");
 });

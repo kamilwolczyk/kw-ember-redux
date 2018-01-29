@@ -1,3 +1,5 @@
+import fetch from 'fetch';
+
 export default class UsersApi {
   static async fetchUser() {
       return fetch('https://jsonplaceholder.typicode.com/users').then((response) => {

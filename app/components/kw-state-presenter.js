@@ -9,9 +9,7 @@ const stateToComputed = state => {
   };
 }
 
-const dispatchToActions = dispatch => {
-  return {};
-}
+const dispatchToActions = () => ({})
 
 const StatePresenterComponent = Component.extend({});
 
