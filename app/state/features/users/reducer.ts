@@ -1,29 +1,51 @@
-import { UsersAction } from './actions';
-import { initialState, UsersState } from './users-state';
+import {
+  AddAction,
+  ModifyAction,
+  RequestAction,
+  RequestUsersFailureAction,
+  RequestUsersSuccessAction,
+  UserAction
+} from "./actions";
 
-export function usersReducer(state: UsersState = initialState, action: any) {
+export const initialState = {
+  current: {
+    firstName: "",
+    lastName: ""
+  },
+  users: [],
+  errors: []
+};
+
+type ActionTypes =
+  | AddAction
+  | ModifyAction
+  | RequestAction
+  | RequestUsersSuccessAction
+  | RequestUsersFailureAction;
+
+export function usersReducer(state = initialState, action: ActionTypes) {
   switch (action.type) {
-    case UsersAction.Add:
+    case UserAction.Add:
       return {
         ...state,
-        current: {
-          firstName: "",
-          lastName: ""
-        },
+        current: { firstName: "", lastName: "" },
         users: [...state.users, action.payload]
       };
-    case UsersAction.ModifyCurrent:
+    case UserAction.ModifyCurrent:
       return {
         ...state,
-        current: action.payload
+        current: { ...state.current, ...action.payload }
       };
-    case UsersAction.RequestUsersSuccess:
+    case UserAction.RequestUsersSuccess:
       return {
         ...state,
         users: [...state.users, ...action.payload]
       };
-    case UsersAction.RequestUsersFailure:
-      return { ...state, errors: `User fetch failed! Error: ${action.payload}` };
+    case UserAction.RequestUsersFailure:
+      return {
+        ...state,
+        errors: [`User fetch failed! Error: ${action.payload}`]
+      };
     default:
       return state;
   }
